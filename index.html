@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarrelloHTML</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <form action="">
+      <div class="container infos" id="form">
+        <h1>I tuoi dati</h1>
+
+        <label for="name">Nome: </label>
+        <input
+          type="text"
+          name="name"
+          id="nameIn"
+          placeholder="John"
+          oninput="validateField(this, LETTERS_REGEX, '#nameError')"
+          required
+        />
+        <div class="error" id="nameError">*Inserisci nome valido</div>
+
+        <label for="surname">Cognome:</label>
+        <input
+          type="text"
+          name="surname"
+          id="surnameIn"
+          placeholder="Doe"
+          oninput="validateField(this, LETTERS_REGEX, '#surnameError')"
+          required
+        />
+        <div class="error" id="surnameError">*Inserisci un cognome valido</div>
+
+        <label for="phone">Numero di telefono: </label>
+        <input
+          type="text"
+          name="phone"
+          id="phoneIn"
+          placeholder="1234567890"
+          oninput="validateField(this, PHONE_REGEX, '#phoneError')"
+          required
+        />
+        <div class="error" id="phoneError">
+          *Inserisci un numero di telefono valido
+        </div>
+
+        <label for="street">Indirizzo: </label>
+        <input
+          type="text"
+          name="street"
+          id="streetIn"
+          placeholder="Paper Street, 537"
+          oninput="validateField(this, STREET_REGEX, '#streetError')"
+          required
+        />
+        <div class="error" id="streetError">*Inserisci un indirizzo valido</div>
+
+        <label for="cFisc">Codice Fiscale: </label>
+        <input
+          type="text"
+          name="cFisc"
+          id="cFiscIn"
+          placeholder="ABCDEF01G23H456I"
+          oninput="validateField(this, CF_REGEX, '#cFiscError')"
+          required
+        />
+        <div class="error" id="cFiscError">
+          *Inserisci un codice fiscale valido
+        </div>
+
+        <label for="age">Età: </label>
+        <input
+          type="number"
+          name="age"
+          id="ageIn"
+          placeholder="0-99"
+          oninput="checkAge()"
+          min="0"
+          max="99"
+          required
+        />
+        <div class="error" id="ageError">*Inserisci un'età valida</div>
+
+        <div class="parentInfo" id="parentInfo" style="display: none">
+          <h3>Informazioni di un tutore legale</h3>
+
+          <label for="parentName">Nome: </label>
+          <input
+            type="text"
+            name="parentName"
+            id="parentNameIn"
+            class="pInfos"
+            placeholder="John"
+            oninput="validateField(this, LETTERS_REGEX, '#parentNameError')"
+            required
+          />
+          <div class="error" id="parentNameError">*Inserisci nome valido</div>
+
+          <label for="parentSurname">Cognome:</label>
+          <input
+            type="text"
+            name="parentSurname"
+            id="parentSurnameIn"
+            class="pInfos"
+            placeholder="Doe"
+            oninput="validateField(this, LETTERS_REGEX, '#parentSurnameError')"
+            required
+          />
+          <div class="error" id="parentSurnameError">
+            *Inserisci un cognome valido
+          </div>
+
+          <label for="parentCF">Codice Fiscale: </label>
+          <input
+            type="text"
+            name="parentCF"
+            id="parentCFIn"
+            class="pInfos"
+            placeholder="ABCDEF01G23H456I"
+            oninput="validateField(this, CF_REGEX, '#parentCFError')"
+            required
+          />
+          <div class="error" id="parentCFError">
+            *Inserisci un codice fiscale valido
+          </div>
+        </div>
+
+        <div class="shopContainer">
+          <div class="shopItem">
+            <img src="res/Kurivolt.jpg" alt="kurivoltV2.0ParallelRare" />
+            <p class="shopText">Kurivolt V2.0 (Parallel Rare)</p>
+            <p class="price">€10.00</p>
+            <label for="kurivoltQty">Qnt: </label>
+            <input
+              type="number"
+              id="kurivoltQty"
+              name="kurivoltQty"
+              class="qntt"
+              min="0"
+              max="99"
+              value="0"
+            />
+          </div>
+          <div class="shopItem">
+            <img src="res/DragoBiancoOcchiBlu.jpg" alt="dragoBiancoOcchiBlu" />
+            <p class="shopText">Drago Bianco Occhi Blu</p>
+            <p class="price">€1999.99</p>
+            <label for="dragoBiancoQty">Qnt: </label>
+            <input
+              type="number"
+              id="dragoBiancoQty"
+              name="dragoBiancoQty"
+              class="qntt"
+              min="0"
+              max="99"
+              value="0"
+            />
+          </div>
+          <div class="shopItem">
+            <img
+              src="res/UtopiaKaiser.jpg"
+              alt="numero93:KaiserUtopia(V.1SuperRare)"
+            />
+            <p class="shopText">Numero 93: Kaiser (V.1 Super Rare)</p>
+            <p class="price">€945.25</p>
+            <label for="kaiserUtopiaQty">Qnt: </label>
+            <input
+              type="number"
+              id="kaiserUtopiaQty"
+              name="kaiserUtopiaQty"
+              class="qntt"
+              min="0"
+              value="0"
+            />
+          </div>
+        </div>
+
+        <div class="btnContainer">
+          <input
+            type="button"
+            value="Invia"
+            id="submitBtn"
+            class="button"
+            onclick="checkForm()"
+          />
+          <input type="reset" value="Cancella" id="resetBtn" class="button" />
+        </div>
+      </div>
+      <div class="container order" id="order">
+        <h1>Recap ordine</h1>
+        <div class="recap" id="recap"></div>
+      </div>
+    </form>
+  </body>
+</html>
