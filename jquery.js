@@ -1,12 +1,16 @@
 function optim(id, regex, error) {
   if (regex.test(id.value)) {
     $(id).css({
-      "border": "2px solid #4B6043", "background-color": "#95BB72"});
+      border: "2px solid #4B6043",
+      "background-color": "#95BB72",
+    });
     $(error).css("display", "none");
     console.log("ok");
   } else {
     $(id).css({
-      "border": "2px solid #A52A2A", "background-color": "#FFC0C0"});
+      border: "2px solid #A52A2A",
+      "background-color": "#FFC0C0",
+    });
     $(error).css("display", "block");
     console.log("no");
   }
@@ -44,8 +48,83 @@ $(document).ready(function () {
   $("#ageIn").on("input", function () {
     let age = parseInt(this.value);
     let pInfoElements = $(".pInfos");
-    if(!isNaN(age) && age > 0 && age < 100) {
-      
+    if (!isNaN(age) && age > 0 && age < 100) {
+      $(this).css({
+        border: "2px solid #4B6043",
+        "background-color": "#95BB72",
+      });
+      if (age < 18) {
+        $("#parentInfo").css("display", "flex");
+        $("#ageError").css("display", "none");
+        pInfoElements.each(function () {
+          $(this).attr("required", "required");
+        });
+      } else {
+        $("#parentInfo").css("display", "none");
+        $("#ageError").css("display", "none");
+        pInfoElements.each(function () {
+          $(this).removeAttr("required");
+        });
+      }
+    } else {
+      $("#parentInfo").css("display", "none");
+      $("#ageError").css("display", "block");
+      $(this).css({
+        border: "2px solid #A52A2A",
+        "background-color": "#FFC0C0",
+      });
+      pInfoElements.each(function () {
+        $(this).removeAttr("required");
+      });
+    }
+  });
+
+  $("#submitBtn").on("click", function () {
+    let name = $("#nameIn").val();
+    let surname = $("#surnameIn").val();
+    let phone = $("#phoneIn").val();
+    let cf = $("#cFiscIn").val();
+    let street = $("#streetIn").val();
+    let age = parseInt($("#ageIn").val());
+
+    if (
+      LETTERS_REGEX.test(name) &&
+      LETTERS_REGEX.test(surname) &&
+      PHONE_REGEX.test(phone) &&
+      CF_REGEX.test(cf) &&
+      street
+    ) {
+      $("#form").css("display", "none");
+
+      cf = cf.toUpperCase();
+
+      let kurivoltQty = parseInt($("#kurivoltQty").val());
+      let dragoBiancoQty = parseInt($("#dragoBiancoQty").val());
+      let kaiserUtopiaQty = parseInt($("#kaiserUtopiaQty").val());
+
+      let price = 0;
+      price += kurivoltQty * 10;
+      price += dragoBiancoQty * 1999.99;
+      price += kaiserUtopiaQty * 945.25;
+
+      $("#recap").html(`
+    <p style="font-size: 16px; color: #333;"><strong>Nome:</strong> ${name}</p>
+    <p style="font-size: 16px; color: #333;"><strong>Cognome:</strong> ${surname}</p>
+    <p style="font-size: 16px; color: #333;"><strong>Numero di telefono:</strong> ${phone}</p>
+    <p style="font-size: 16px; color: #333;"><strong>Codice Fiscale:</strong> ${cf}</p>
+    <p style="font-size: 16px; color: #333;"><strong>Indirizzo:</strong> ${street}</p>
+    <p style="font-size: 16px; color: #333;"><strong>Età:</strong> ${age}</p>
+    <hr style="border: 1px solid #95BB72;">
+    <p style="font-size: 16px; color: #333;"><strong>Quantità Kurivolt:</strong> ${kurivoltQty}</p>
+    <p style="font-size: 16px; color: #333;"><strong>Quantità Drago Bianco:</strong> ${dragoBiancoQty}</p>
+    <p style="font-size: 16px; color: #333;"><strong>Quantità Utopia Kaiser:</strong> ${kaiserUtopiaQty}</p>
+    <hr style="border: 1px solid #95BB72;">
+    <p style="font-size: 18px; color: #4B6043; font-weight: bold;">Totale: €${price.toFixed(
+      2
+    )}</p>
+  `);
+
+      $("#order").css("display", "flex");
     }
   });
 });
