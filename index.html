@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="jquery.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CarrelloHTML</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <form action="">
@@ -18,7 +19,6 @@
           name="name"
           id="nameIn"
           placeholder="John"
-          oninput="validateField(this, LETTERS_REGEX, '#nameError')"
           required
         />
         <div class="error" id="nameError">*Inserisci nome valido</div>
@@ -29,7 +29,6 @@
           name="surname"
           id="surnameIn"
           placeholder="Doe"
-          oninput="validateField(this, LETTERS_REGEX, '#surnameError')"
           required
         />
         <div class="error" id="surnameError">*Inserisci un cognome valido</div>
@@ -40,7 +39,6 @@
           name="phone"
           id="phoneIn"
           placeholder="1234567890"
-          oninput="validateField(this, PHONE_REGEX, '#phoneError')"
           required
         />
         <div class="error" id="phoneError">
@@ -53,7 +51,6 @@
           name="street"
           id="streetIn"
           placeholder="Paper Street, 537"
-          oninput="validateField(this, STREET_REGEX, '#streetError')"
           required
         />
         <div class="error" id="streetError">*Inserisci un indirizzo valido</div>
@@ -64,7 +61,6 @@
           name="cFisc"
           id="cFiscIn"
           placeholder="ABCDEF01G23H456I"
-          oninput="validateField(this, CF_REGEX, '#cFiscError')"
           required
         />
         <div class="error" id="cFiscError">
@@ -94,7 +90,6 @@
             id="parentNameIn"
             class="pInfos"
             placeholder="John"
-            oninput="validateField(this, LETTERS_REGEX, '#parentNameError')"
             required
           />
           <div class="error" id="parentNameError">*Inserisci nome valido</div>
@@ -106,7 +101,6 @@
             id="parentSurnameIn"
             class="pInfos"
             placeholder="Doe"
-            oninput="validateField(this, LETTERS_REGEX, '#parentSurnameError')"
             required
           />
           <div class="error" id="parentSurnameError">
@@ -120,7 +114,6 @@
             id="parentCFIn"
             class="pInfos"
             placeholder="ABCDEF01G23H456I"
-            oninput="validateField(this, CF_REGEX, '#parentCFError')"
             required
           />
           <div class="error" id="parentCFError">

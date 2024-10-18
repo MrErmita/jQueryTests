@@ -79,50 +79,13 @@ body {
     justify-content: center;
   }
   
-  .nameError {
+  .error {
     color: #f43c3c;
     font-size: 12px;
     margin-top: -10px;
     margin-bottom: 5px;
     display: none;
   }
-  .surnameError {
-    color: #f43c3c;
-    font-size: 12px;
-    margin-top: -10px;
-    margin-bottom: 5px;
-    display: none;
-  }
-  .phoneError {
-    color: #f43c3c;
-    font-size: 12px;
-    margin-top: -10px;
-    margin-bottom: 5px;
-    display: none;
-  }
-  .streetError {
-      color: #f43c3c;
-      font-size: 12px;
-      margin-top: -10px;
-      margin-bottom: 5px;
-      display: none;
-    }
-  
-  .cFiscError {
-    color: #f43c3c;
-    font-size: 12px;
-    margin-top: -10px;
-    margin-bottom: 5px;
-    display: none;
-  }
-  .ageError {
-    color: #f43c3c;
-    font-size: 12px;
-    margin-top: -10px;
-    margin-bottom: 5px;
-    display: none;
-  }
-  
   
   .parentInfo {
       display: none;
