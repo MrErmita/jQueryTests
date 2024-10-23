@@ -22,7 +22,7 @@ $(document).ready(function () {
   const STREET_REGEX = /^[A-Za-z0-9 , / ]+$/;
   const CF_REGEX = /^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/i;
 
-  //controllo generale per tutti i campi
+  //*controllo generale per tutti i campi
   $("#nameIn").on("input", function () {
     optim(this, LETTERS_REGEX, "#nameError");
     console.log(this.value);
@@ -44,7 +44,7 @@ $(document).ready(function () {
     console.log(this.value);
   });
 
-  //controllo specifico per l'età
+  //*controllo specifico per l'età
   $("#ageIn").on("input", function () {
     let age = parseInt(this.value);
     let pInfoElements = $(".pInfos");
