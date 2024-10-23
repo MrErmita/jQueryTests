@@ -48,34 +48,28 @@ $(document).ready(function () {
   $("#ageIn").on("input", function () {
     let age = parseInt(this.value);
     let pInfoElements = $(".pInfos");
-    if (!isNaN(age) && age > 0 && age < 100) {
+
+    if (age > 0 && age < 100) {
       $(this).css({
         border: "2px solid #4B6043",
         "background-color": "#95BB72",
       });
       if (age < 18) {
         $("#parentInfo").css("display", "flex");
-        $("#ageError").css("display", "none");
-        pInfoElements.each(function () {
-          $(this).attr("required", "required");
-        });
+        $("#ageError").hide();
+        pInfoElements.attr("required", true);
       } else {
-        $("#parentInfo").css("display", "none");
-        $("#ageError").css("display", "none");
-        pInfoElements.each(function () {
-          $(this).removeAttr("required");
-        });
+        $("#parentInfo").hide();
+        pInfoElements.removeAttr("required");
       }
     } else {
-      $("#parentInfo").css("display", "none");
-      $("#ageError").css("display", "block");
       $(this).css({
         border: "2px solid #A52A2A",
         "background-color": "#FFC0C0",
       });
-      pInfoElements.each(function () {
-        $(this).removeAttr("required");
-      });
+      $("#parentInfo").hide();
+      $("#ageError").show();
+      pInfoElements.removeAttr("required");
     }
   });
 
