@@ -17,6 +17,22 @@ function optim(id, regex, error) {
 }
 
 $(document).ready(function () {
+  $("#nameIn").val("");
+  $("#surnameIn").val("");
+  $("#phoneIn").val("");
+  $("#streetIn").val("");
+  $("#cityIn").val("");
+  $("#ageIn").val("");
+  $("#nameError").css("display", "none");
+  $("#surnameError").css("display", "none");
+  $("#phoneError").css("display", "none");
+  $("#streetError").css("display", "none");
+  $("#cityError").css("display", "none");
+  $("#ageError").css("display", "none");
+
+
+
+
   const LETTERS_REGEX = /^[a-zA-Z]+$/;
   const PHONE_REGEX = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
   const STREET_REGEX = /^[A-Za-z0-9 , / ]+$/;
@@ -120,5 +136,10 @@ $(document).ready(function () {
 
       $("#order").css("display", "flex");
     }
+  });
+
+  $("#confirmBtn").on("click", function () {
+    $("#order").hide();
+    location.reload();
   });
 });
